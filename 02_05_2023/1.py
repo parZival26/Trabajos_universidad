@@ -1,0 +1,1 @@
+n = int(input("Ingresa el numero de estudiantes: ")); print(f"El promedio de edad es: {round(sum([int(input('Ingresa la edad del estudiante: ')) for i in range(n)])/n)}") # Este algorimo calcula el promedio de edad de n estudiantes

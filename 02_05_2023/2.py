@@ -1,0 +1,2 @@
+texto = input("Ingresa el texto para saber si es un palindromo: ").lower().replace(" ", "") # Esta linea de codigo pide al usuario un texto y lo convierte a minusculas y elimina los espacios
+print(f"El texto {texto} es un palindromo" if texto == texto[::-1] else f"El texto {texto} no es un palindromo") # Esta linea de codigo imprime si el texto es un palindromo o no

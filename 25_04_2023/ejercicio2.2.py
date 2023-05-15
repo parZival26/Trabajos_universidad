@@ -2,13 +2,17 @@ import csv
 
 grades = []
 
+
+# Leer el archivo y almacenar los datos en una lista
 with open('titiribi.csv', 'r') as file:
     reader = csv.reader(file, delimiter=',')
     for row in reader:
         grades.append(row)
 
-grades.pop(0)
+# Eliminar la primera fila que contiene los nombres de las columnas
 
+
+# Crear un diccionario con las notas de cada estudiante
 notas = {
     "A": {
         "Matematicas": list(i[1] for i in grades if i[0] == "A" ),
@@ -27,10 +31,12 @@ notas = {
     }
 }
 
+# Convertir las notas de cada estudiante en números flotantes
 for i in notas:
     for j in notas[i]:
         notas[i][j] = list(map(float, notas[i][j]))
 
+# Calcular los promedios de cada estudiante
 promedios = {
     "A": {
         "Matematicas": round(sum(notas["A"]["Matematicas"]) / len(notas["A"]["Matematicas"]), 2),
@@ -49,13 +55,15 @@ promedios = {
     }
 }
 
+
+# Calcular los promedios generales de cada colegio
 promedio_general = {
     "A" : round(sum(promedios["A"].values()) / len(promedios["A"].values()), 2),
     "B" : round(sum(promedios["B"].values()) / len(promedios["B"].values()), 2),
     "C" : round(sum(promedios["C"].values()) / len(promedios["C"].values()), 2)
 }
 
-
+# Inicializar las variables que almacenarán los mejores promedios y los mejores diccionarios
 mejor_promedio_matematicas = 0
 mejor_promedio_ingles = 0
 mejor_promedio_espanol = 0
@@ -86,5 +94,10 @@ General: {max(promedio_general, key=promedio_general.get)} con un promedio de {m
 
 
 """
-Este algoritmo cal
+Este algoritmo calcula el promedio de cada materia por cada colegio, luego calcula el promedio general de cada colegio y finalmente imprime el mejor promedio de cada materia y el mejor promedio general.
+para eso se utilizan 3 diccionarios, uno para las notas, otro para los promedios de cada materia por colegio y otro para los promedios generales por colegio.
+con el diccionario de notas se calculan los promedios de cada materia por colegio y se almacenan en el diccionario de promedios, luego con el diccionario de promedios se calculan los promedios generales por colegio y se almacenan en el diccionario de promedios generales.
+con el diccionario de promedios se calculan los mejores promedios de cada materia y con el diccionario de promedios generales se calcula el mejor promedio general.
+con el diccionario de promedios se calculan los mejores promedios de cada materia y con el diccionario de promedios generales se calcula el mejor promedio general.
+
 """
